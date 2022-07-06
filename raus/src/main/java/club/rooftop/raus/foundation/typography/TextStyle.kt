@@ -1,4 +1,4 @@
-package club.rooftop.raus.style.typography
+package club.rooftop.raus.foundation.typography
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight

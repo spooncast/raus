@@ -13,7 +13,7 @@ import club.rooftop.raus.components.button.ButtonType
 import club.rooftop.raus.components.button.SolidButton
 import club.rooftop.raus.components.dialog.PopupDialog
 import club.rooftop.raus.foundation.color.Purple50
-import club.rooftop.raus.style.typography.Body1RegularCenter
+import club.rooftop.raus.foundation.typography.Body1RegularCenter
 
 class PopupFragment : BaseFragment() {
 
