@@ -19,5 +19,12 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+
+    - name: Decode Firebase App Dist Key File
+      shell: bash
+      env:
+        FIREBASE_DIST_KEY: ${{ secrets.FIREBASE_DIST_KEY }}
+      run: echo "$FIREBASE_DIST_KEY" | base64 -d > dist/firebase-app-dist-key.json
+
     - name: Build with Gradle
       run: ./gradlew assembleDebug appDistributionUploadDebug
