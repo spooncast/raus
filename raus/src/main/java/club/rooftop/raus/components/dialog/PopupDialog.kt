@@ -1,6 +1,5 @@
 package club.rooftop.raus.components.dialog
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,11 +27,10 @@ import club.rooftop.raus.common.HorizontalSpacer
 import club.rooftop.raus.common.VerticalSpacer
 import club.rooftop.raus.components.button.ButtonType
 import club.rooftop.raus.components.button.SolidButton
-import club.rooftop.raus.foundation.color.ColorPalette
 import club.rooftop.raus.foundation.color.Gray90
 import club.rooftop.raus.foundation.color.Purple50
-import club.rooftop.raus.style.typography.Body1RegularCenter
-import club.rooftop.raus.style.typography.SubheadBoldCenter
+import club.rooftop.raus.foundation.typography.Body1RegularCenter
+import club.rooftop.raus.foundation.typography.SubheadBoldCenter
 
 
 @Composable

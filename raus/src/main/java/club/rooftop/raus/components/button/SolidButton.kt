@@ -20,8 +20,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import club.rooftop.raus.common.HorizontalSpacer
 import club.rooftop.raus.foundation.color.Purple50
-import club.rooftop.raus.style.typography.Body1Bold
-import club.rooftop.raus.style.typography.SubheadBold
+import club.rooftop.raus.foundation.typography.Body1Bold
+import club.rooftop.raus.foundation.typography.SubheadBold
 
 
 @Composable
