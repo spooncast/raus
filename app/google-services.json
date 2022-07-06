@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "769097322196",
+    "project_id": "raus-demo",
+    "storage_bucket": "raus-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769097322196:android:118f365e5b4eb60f1c7541",
+        "android_client_info": {
+          "package_name": "club.rooftop.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "769097322196-g03k18jlml60rnjvk58d0bkouna9jubu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYNXlv6BGemfBM9wh48B39cqatrxyQewg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "769097322196-g03k18jlml60rnjvk58d0bkouna9jubu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

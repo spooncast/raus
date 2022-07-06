@@ -1,5 +1,7 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.firebase.appdistribution'
+    id 'com.google.gms.google-services'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs'
 }
@@ -21,6 +23,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            firebaseAppDistribution {
+                artifactType="APK"
+                testers="$rootDir/dist/testers.txt"
+                serviceCredentialsFile = "$rootDir/dist/firebase-app-dist-key.json"
+            }
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -79,4 +88,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.0'
     implementation 'androidx.navigation:navigation-compose:2.5.0'
     androidTestImplementation 'androidx.navigation:navigation-testing:2.5.0'
+
+
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:30.2.0')
 }
