@@ -42,10 +42,10 @@ fun PopupDialog(
     secondaryButtonText: String? = null,
     onClickPrimaryButton: () -> Unit,
     onClickSecondaryButton: (() -> Unit)? = null,
-    onDismiss: (() -> Unit)? = null,
+    onDismiss: (() -> Unit) = {},
 ) {
     Dialog(onDismissRequest = {
-
+        onDismiss()
     }) {
         Surface(
             modifier = Modifier.clip(RoundedCornerShape(16.dp))
@@ -202,7 +202,6 @@ fun PreviewHorizontalOneButton() {
 
         },
         onClickSecondaryButton = null,
-        onDismiss = null
     )
 }
 
@@ -231,7 +230,6 @@ fun PreviewHorizontalTwoButton() {
 
         },
         onClickSecondaryButton = null,
-        onDismiss = null
     )
 }
 
@@ -260,7 +258,6 @@ fun PreviewVerticalOneButton() {
 
         },
         onClickSecondaryButton = null,
-        onDismiss = null
     )
 }
 
@@ -289,6 +286,5 @@ fun PreviewVerticalTwoButton() {
 
         },
         onClickSecondaryButton = null,
-        onDismiss = null
     )
 }
