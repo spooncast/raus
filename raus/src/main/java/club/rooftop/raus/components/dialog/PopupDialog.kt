@@ -1,15 +1,18 @@
 package club.rooftop.raus.components.dialog
 
-import club.rooftop.raus.style.typography.Body1RegularCenter
-import club.rooftop.raus.style.typography.SubheadBoldCenter
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -25,13 +28,13 @@ import club.rooftop.raus.common.HorizontalSpacer
 import club.rooftop.raus.common.VerticalSpacer
 import club.rooftop.raus.components.button.ButtonType
 import club.rooftop.raus.components.button.SolidButton
+import club.rooftop.raus.foundation.color.ColorPalette
 import club.rooftop.raus.foundation.color.Gray90
 import club.rooftop.raus.foundation.color.Purple50
+import club.rooftop.raus.style.typography.Body1RegularCenter
+import club.rooftop.raus.style.typography.SubheadBoldCenter
 
 
-/**
- * https://www.figma.com/file/BIDgQ7Eq9LV09c5vDxXxhw/Rooftop-Design-Library?node-id=1478%3A296
- */
 @Composable
 fun PopupDialog(
     title: String? = null,
@@ -81,44 +84,89 @@ private fun FooterArea(
     secondaryButtonText: String?,
     onClickSecondaryButton: (() -> Unit)?,
 ) {
-    val paddingTop = if (primaryButtonType == ButtonType.Solid) 6.dp else 0.dp
-    val paddingBottom = if (primaryButtonType == ButtonType.Solid) 24.dp else 18.dp
-    val modifier = Modifier.fillMaxWidth().padding(top = paddingTop, bottom = paddingBottom)
+    val modifier = Modifier
+        .fillMaxWidth()
+        .padding(
+            top = if (primaryButtonType == ButtonType.Solid) 6.dp else 0.dp,
+            bottom = if (primaryButtonType == ButtonType.Solid) 24.dp else 18.dp
+        )
 
     if (primaryButtonType == ButtonType.Solid) {
-        Column(
-            modifier = modifier,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            PrimaryButton(
-                primaryButtonType,
-                primaryButtonText,
-                primaryButtonTextColor,
-                onClickPrimaryButton
-            )
-
-            if (secondaryButtonText != null) {
-                VerticalSpacer(size = 20.dp)
-                SecondaryButton(secondaryButtonText, onClickSecondaryButton)
-            }
-        }
+        VerticalButtons(
+            modifier,
+            primaryButtonType,
+            primaryButtonText,
+            primaryButtonTextColor,
+            onClickPrimaryButton,
+            secondaryButtonText,
+            onClickSecondaryButton
+        )
     } else {
-        Row(
-            modifier = modifier,
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            if (secondaryButtonText != null) {
-                SecondaryButton(secondaryButtonText, onClickSecondaryButton)
-                HorizontalSpacer(size = 60.dp)
-            }
+        HorizontalButtons(
+            modifier,
+            secondaryButtonText,
+            onClickSecondaryButton,
+            primaryButtonType,
+            primaryButtonText,
+            primaryButtonTextColor,
+            onClickPrimaryButton
+        )
+    }
+}
 
-            PrimaryButton(
-                primaryButtonType,
-                primaryButtonText,
-                primaryButtonTextColor,
-                onClickPrimaryButton
-            )
+@Composable
+private fun HorizontalButtons(
+    modifier: Modifier,
+    secondaryButtonText: String?,
+    onClickSecondaryButton: (() -> Unit)?,
+    primaryButtonType: ButtonType,
+    primaryButtonText: String,
+    primaryButtonTextColor: Color,
+    onClickPrimaryButton: () -> Unit,
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        if (secondaryButtonText != null) {
+            SecondaryButton(secondaryButtonText, onClickSecondaryButton)
+            HorizontalSpacer(size = 40.dp)
+        }
+
+        PrimaryButton(
+            primaryButtonType,
+            primaryButtonText,
+            primaryButtonTextColor,
+            onClickPrimaryButton
+        )
+    }
+}
+
+@Composable
+private fun VerticalButtons(
+    modifier: Modifier,
+    primaryButtonType: ButtonType,
+    primaryButtonText: String,
+    primaryButtonTextColor: Color,
+    onClickPrimaryButton: () -> Unit,
+    secondaryButtonText: String?,
+    onClickSecondaryButton: (() -> Unit)?,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        PrimaryButton(
+            primaryButtonType,
+            primaryButtonText,
+            primaryButtonTextColor,
+            onClickPrimaryButton
+        )
+
+        if (secondaryButtonText != null) {
+            VerticalSpacer(size = 8.dp)
+            SecondaryButton(secondaryButtonText, onClickSecondaryButton)
         }
     }
 }
@@ -136,14 +184,21 @@ private fun PrimaryButton(
             text = text,
             onClick = onClick
         )
-        else -> Text(
-            modifier = Modifier.widthIn(min = 80.dp),
-            text = text,
-            color = textColor,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            style = SubheadBoldCenter
-        )
+        else -> Box(
+            modifier = Modifier.height(40.dp).clickable { onClick() },
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .widthIn(min = 100.dp),
+                text = text,
+                color = textColor,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                style = SubheadBoldCenter
+            )
+        }
     }
 }
 
@@ -152,14 +207,21 @@ private fun SecondaryButton(
     buttonText: String,
     onClick: (() -> Unit)?,
 ) {
-    Text(
-        text = buttonText,
-        color = Gray90,
-        maxLines = 1,
-        overflow = TextOverflow.Ellipsis,
-        style = SubheadBoldCenter,
-        modifier = Modifier.widthIn(min = 80.dp).clickable { onClick?.invoke() }
-    )
+    Box(
+        modifier = Modifier.height(40.dp).clickable { onClick?.invoke() },
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = buttonText,
+            modifier = Modifier
+                .align(Alignment.Center)
+                .widthIn(min = 100.dp),
+            color = Gray90,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            style = SubheadBoldCenter,
+        )
+    }
 }
 
 @Composable
@@ -178,113 +240,138 @@ private fun TitleArea(title: String?) {
     }
 }
 
-/**
- * Horizontal
- * One Button
- *
- * https://www.figma.com/file/BIDgQ7Eq9LV09c5vDxXxhw/Rooftop-Design-Library?node-id=1478%3A553
- */
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewHorizontalOneButton() {
-    PopupDialog(
-        title = "Title",
-        body = {
-            Text(
-                text = "This Twitch account is already connected to an another rooftop account. Please try an another Twitch account.",
-                style = Body1RegularCenter)
-        },
-        primaryButtonText = "Confirm",
-        primaryButtonType = ButtonType.Text,
-        primaryButtonTextColor = Gray90,
-        secondaryButtonText = null,
-        onClickPrimaryButton = {
+    MaterialTheme {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            PopupDialog(
+                title = "Title",
+                body = {
+                    Text(
+                        text = "This Twitch account is already connected to an another rooftop account. Please try an another Twitch account.",
+                        style = Body1RegularCenter)
+                },
+                primaryButtonText = "Confirm",
+                primaryButtonType = ButtonType.Text,
+                primaryButtonTextColor = Gray90,
+                secondaryButtonText = null,
+                onClickPrimaryButton = {
 
-        },
-        onClickSecondaryButton = null,
-    )
+                },
+                onClickSecondaryButton = null,
+            )
+        }
+    }
 }
 
 /**
  * Horizontal
  * Two Button
- *
- * https://www.figma.com/file/BIDgQ7Eq9LV09c5vDxXxhw/Rooftop-Design-Library?node-id=1478%3A553
  */
 @Preview(showBackground = true)
 @Composable
 fun PreviewHorizontalTwoButton() {
-    PopupDialog(
-        title = "Title",
-        body = {
-            Text(
-                text = "This Twitch account is already connected to an another rooftop account. Please try an another Twitch account.",
-                style = Body1RegularCenter
-            )
-        },
-        primaryButtonText = "OK",
-        primaryButtonType = ButtonType.Text,
-        primaryButtonTextColor = Purple50,
-        secondaryButtonText = "Cancel",
-        onClickPrimaryButton = {
+    MaterialTheme {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            PopupDialog(
+                title = "Title",
+                body = {
+                    Text(
+                        text = "This Twitch account is already connected to an another rooftop account. Please try an another Twitch account.",
+                        style = Body1RegularCenter
+                    )
+                },
+                primaryButtonText = "OK",
+                primaryButtonType = ButtonType.Text,
+                primaryButtonTextColor = Purple50,
+                secondaryButtonText = "Cancel",
+                onClickPrimaryButton = {
 
-        },
-        onClickSecondaryButton = null,
-    )
+                },
+                onClickSecondaryButton = null,
+            )
+        }
+    }
 }
 
 /**
  * Vertical
  * One Button
- *
- * https://www.figma.com/file/BIDgQ7Eq9LV09c5vDxXxhw/Rooftop-Design-Library?node-id=1478%3A553
  */
 @Preview(showBackground = true)
 @Composable
 fun PreviewVerticalOneButton() {
-    PopupDialog(
-        title = "Title",
-        body = {
-            Text(
-                text = "This Twitch account is already connected to an another rooftop account. Please try an another Twitch account.",
-                style = Body1RegularCenter
-            )
-        },
-        primaryButtonText = "Confirm",
-        primaryButtonType = ButtonType.Solid,
-        primaryButtonTextColor = Gray90,
-        secondaryButtonText = null,
-        onClickPrimaryButton = {
+    MaterialTheme {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            PopupDialog(
+                title = "Title",
+                body = {
+                    Text(
+                        text = "This Twitch account is already connected to an another rooftop account. Please try an another Twitch account.",
+                        style = Body1RegularCenter
+                    )
+                },
+                primaryButtonText = "Confirm",
+                primaryButtonType = ButtonType.Solid,
+                primaryButtonTextColor = Gray90,
+                secondaryButtonText = null,
+                onClickPrimaryButton = {
 
-        },
-        onClickSecondaryButton = null,
-    )
+                },
+                onClickSecondaryButton = null,
+            )
+        }
+    }
 }
 
 /**
  * Vertical
  * Two Button
- *
- * https://www.figma.com/file/BIDgQ7Eq9LV09c5vDxXxhw/Rooftop-Design-Library?node-id=1478%3A553
  */
 @Preview(showBackground = true)
 @Composable
 fun PreviewVerticalTwoButton() {
-    PopupDialog(
-        title = "Title",
-        body = {
-            Text(
-                text = "This Twitch account is already connected to an another rooftop account. Please try an another Twitch account.",
-                style = Body1RegularCenter
-            )
-        },
-        primaryButtonText = "Confirm",
-        primaryButtonType = ButtonType.Solid,
-        primaryButtonTextColor = Gray90,
-        secondaryButtonText = "Cancel",
-        onClickPrimaryButton = {
+    MaterialTheme {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            PopupDialog(
+                title = "Title",
+                body = {
+                    Text(
+                        text = "This Twitch account is already connected to an another rooftop account. Please try an another Twitch account.",
+                        style = Body1RegularCenter
+                    )
+                },
+                primaryButtonText = "Confirm",
+                primaryButtonType = ButtonType.Solid,
+                primaryButtonTextColor = Gray90,
+                secondaryButtonText = "Cancel",
+                onClickPrimaryButton = {
 
-        },
-        onClickSecondaryButton = null,
-    )
+                },
+                onClickSecondaryButton = null,
+            )
+        }
+    }
 }
