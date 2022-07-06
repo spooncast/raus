@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import club.rooftop.raus.common.HorizontalSpacer
 import club.rooftop.raus.foundation.color.Purple50
+import club.rooftop.raus.style.typography.Body1Bold
 import club.rooftop.raus.style.typography.SubheadBold
 
 
@@ -58,7 +59,7 @@ fun SolidButton(
             text = text,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            style = SubheadBold
+            style = if (size == ButtonSize.L) SubheadBold else Body1Bold
         )
     }
 }

@@ -8,5 +8,20 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="club.rooftop.demo.ui.MainFragment"
-        android:label="fragment_main" />
+        android:label="fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_buttonsFragment"
+            app:destination="@id/buttonsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_popupFragment"
+            app:destination="@id/popupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/buttonsFragment"
+        android:name="club.rooftop.demo.ui.buttons.ButtonsFragment"
+        android:label="fragment_buttons" />
+    <fragment
+        android:id="@+id/popupFragment"
+        android:name="club.rooftop.demo.ui.popup.PopupFragment"
+        android:label="fragment_popup" />
 </navigation>

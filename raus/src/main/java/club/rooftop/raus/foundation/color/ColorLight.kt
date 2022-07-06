@@ -62,12 +62,12 @@ val Black_A0 = Color(0x00000000)
 
 val ColorPalette = lightColors(
     primary = Purple50,
-    primaryVariant = White,
+    primaryVariant = Purple100,
     secondary = Red50,
     secondaryVariant = Red50,
     background = White,
     surface = White,
-    onPrimary = Gray90,
+    onPrimary = White,
     onSecondary = White,
     onBackground = Gray90,
     onSurface = Gray90
