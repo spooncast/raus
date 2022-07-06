@@ -24,6 +24,11 @@ android {
 
     buildTypes {
         debug {
+            ext.enableCrashlytics = false
+            ext.alwaysUpdateBuildId = false
+            splits.abi.enable = false
+            splits.density.enable = false
+
             firebaseAppDistribution {
                 artifactType = "APK"
                 testersFile = "$rootDir/dist/testers.txt"
