@@ -3,7 +3,7 @@ Rooftop Android UI System
 
 ## Download
 Step 1. Add the JitPack repository to your build file
-```
+```gradle
 allprojects {
     repositories {
         ...
@@ -13,7 +13,7 @@ allprojects {
 ```
 
 Step 2. Add the dependency
-```
+```gradle
 dependencies {
     implementation 'com.github.spooncast:raus:Tag'
 }
@@ -22,7 +22,7 @@ dependencies {
 ## Usecase
 ### 1. Button
 * Solid Button
-```
+```kotlin
 SolidButton(
     text = "Button",
     onClick = {}
@@ -30,7 +30,7 @@ SolidButton(
 ```
 
 ## 2. Popup
-```
+```kotlin
 PopupDialog(
     title = "Title",
     body = {
