@@ -23,6 +23,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            firebaseAppDistribution {
+                artifactType="APK"
+                testers="$rootDir/dist/testers.txt"
+                serviceCredentialsFile = "$rootDir/dist/firebase-app-dist-key.json"
+            }
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
