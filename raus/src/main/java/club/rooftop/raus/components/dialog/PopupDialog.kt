@@ -229,7 +229,7 @@ private fun TitleArea(title: String?) {
             text = title,
             modifier = Modifier.fillMaxWidth(),
             color = Gray90,
-            maxLines = 1,
+            maxLines = 2,
             overflow = TextOverflow.Ellipsis,
             style = SubheadBoldCenter
         )

@@ -47,6 +47,13 @@ class PopupFragment : BaseFragment() {
                 popupType.value = PopupType.VERTICAL_2_BUTTON
             }
 
+            VerticalSpacer(size = 8.dp)
+
+            SolidButton(text = "2 button popup - very long title") {
+                popupType.value = PopupType.HORIZONTAL_2_BUTTON_LONG_TITLE
+            }
+
+
             PopupDialogs()
         }
     }
@@ -70,6 +77,19 @@ class PopupFragment : BaseFragment() {
             PopupType.HORIZONTAL_2_BUTTON -> {
                 PopupDialog(
                     title = "Title",
+                    body = {
+                        BodyText()
+                    },
+                    primaryButtonText = "Ok",
+                    primaryButtonTextColor = Purple50,
+                    secondaryButtonText = "Cancel",
+                    onClickPrimaryButton = { /*TODO*/ },
+                    onDismiss = { popupType.value = null }
+                )
+            }
+            PopupType.HORIZONTAL_2_BUTTON_LONG_TITLE -> {
+                PopupDialog(
+                    title = "Anakin Skywalker was a human Jedi Knight, one of the central antagonist of the original trilogy.",
                     body = {
                         BodyText()
                     },
@@ -122,6 +142,7 @@ class PopupFragment : BaseFragment() {
 private enum class PopupType {
     HORIZONTAL_1_BUTTON,
     HORIZONTAL_2_BUTTON,
+    HORIZONTAL_2_BUTTON_LONG_TITLE,
     VERTICAL_1_BUTTON,
     VERTICAL_2_BUTTON
 }
