@@ -31,6 +31,7 @@ import club.rooftop.raus.foundation.color.Gray90
 import club.rooftop.raus.foundation.color.Purple50
 import club.rooftop.raus.foundation.typography.Body1RegularCenter
 import club.rooftop.raus.foundation.typography.SubheadBoldCenter
+import club.rooftop.raus.foundation.typography.TitleBoldCenter
 
 
 @Composable
@@ -231,7 +232,7 @@ private fun TitleArea(title: String?) {
             color = Gray90,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
-            style = SubheadBoldCenter
+            style = TitleBoldCenter
         )
 
         VerticalSpacer(size = 16.dp)

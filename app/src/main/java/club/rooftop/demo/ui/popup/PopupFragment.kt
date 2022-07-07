@@ -14,6 +14,7 @@ import club.rooftop.raus.components.button.SolidButton
 import club.rooftop.raus.components.dialog.PopupDialog
 import club.rooftop.raus.foundation.color.Purple50
 import club.rooftop.raus.foundation.typography.Body1RegularCenter
+import club.rooftop.raus.foundation.typography.SubheadRegularCenter
 
 class PopupFragment : BaseFragment() {
 
@@ -133,7 +134,7 @@ class PopupFragment : BaseFragment() {
     private fun BodyText() {
         Text(
             text = "Anakin Skywalker was a human Jedi Knight, one of the central antagonist of the original trilogy.",
-            style = Body1RegularCenter
+            style = SubheadRegularCenter
         )
     }
 
