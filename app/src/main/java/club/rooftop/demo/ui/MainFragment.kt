@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,8 +19,12 @@ class MainFragment : BaseFragment() {
     @Composable
     override fun Body() {
         Column {
-            ListItem("Button") {
+            ListItem("Buttons") {
                 navigate(NavigateTo.Button)
+            }
+
+            ListItem("Tags") {
+                navigate(NavigateTo.Tag)
             }
 
             ListItem("Popup") {
@@ -49,6 +52,7 @@ class MainFragment : BaseFragment() {
         when(nav) {
             NavigateTo.Button -> MainFragmentDirections.actionMainFragmentToButtonsFragment()
             NavigateTo.Popup -> MainFragmentDirections.actionMainFragmentToPopupFragment()
+            NavigateTo.Tag -> MainFragmentDirections.actionMainFragmentToTagsFragment()
         }.let {
             findNavController().navigate(it)
         }
@@ -56,5 +60,5 @@ class MainFragment : BaseFragment() {
 }
 
 enum class NavigateTo {
-    Button, Popup
+    Button, Popup, Tag
 }

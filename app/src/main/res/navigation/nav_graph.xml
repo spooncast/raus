@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_mainFragment_to_popupFragment"
             app:destination="@id/popupFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_tagsFragment"
+            app:destination="@id/tagsFragment" />
     </fragment>
     <fragment
         android:id="@+id/buttonsFragment"
@@ -24,4 +27,9 @@
         android:id="@+id/popupFragment"
         android:name="club.rooftop.demo.ui.popup.PopupFragment"
         android:label="fragment_popup" />
+    <fragment
+        android:id="@+id/tagsFragment"
+        android:name="club.rooftop.demo.TagsFragment"
+        android:label="fragment_tags"
+        tools:layout="@layout/fragment_tags" />
 </navigation>
