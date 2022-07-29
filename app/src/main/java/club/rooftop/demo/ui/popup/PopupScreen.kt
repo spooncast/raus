@@ -48,7 +48,6 @@ fun PopupScreen() {
             popupType.value = PopupType.HORIZONTAL_2_BUTTON_LONG_TITLE
         }
 
-
         PopupDialogs()
     }
 }

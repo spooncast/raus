@@ -18,26 +18,20 @@ fun ButtonScreen() {
         SolidButton(
             size = ButtonSize.L,
             text = "Large Button"
-        ) {
-
-        }
+        ) {}
 
         VerticalSpacer(size = 8.dp)
 
         SolidButton(
             size = ButtonSize.M,
             text = "Medium Button"
-        ) {
-
-        }
+        ) {}
 
         VerticalSpacer(size = 8.dp)
 
         SolidButton(
             size = ButtonSize.S,
             text = "Small Button"
-        ) {
-
-        }
+        ) {}
     }
 }
