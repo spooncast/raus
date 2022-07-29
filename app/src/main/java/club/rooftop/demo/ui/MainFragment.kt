@@ -20,15 +20,15 @@ class MainFragment : BaseFragment() {
     override fun Body() {
         Column {
             ListItem("Buttons") {
-                navigate(NavigateTo.Button)
+                navigate(UiComponent.Button)
             }
 
             ListItem("Tags") {
-                navigate(NavigateTo.Tag)
+                navigate(UiComponent.Tag)
             }
 
             ListItem("Popup") {
-                navigate(NavigateTo.Popup)
+                navigate(UiComponent.Popup)
             }
         }
     }
@@ -48,17 +48,11 @@ class MainFragment : BaseFragment() {
         )
     }
 
-    private fun navigate(nav: NavigateTo) {
-        when(nav) {
-            NavigateTo.Button -> MainFragmentDirections.actionMainFragmentToButtonsFragment()
-            NavigateTo.Popup -> MainFragmentDirections.actionMainFragmentToPopupFragment()
-            NavigateTo.Tag -> MainFragmentDirections.actionMainFragmentToTagsFragment()
-        }.let {
-            findNavController().navigate(it)
-        }
+    private fun navigate(uiComponent: UiComponent) {
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailsFragment(uiComponent))
     }
 }
 
-enum class NavigateTo {
+enum class UiComponent {
     Button, Popup, Tag
 }
