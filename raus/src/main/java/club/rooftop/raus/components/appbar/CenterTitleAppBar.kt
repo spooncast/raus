@@ -15,19 +15,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import club.rooftop.raus.R
 
 @Composable
 fun CenterTitleAppBar(
     backgroundColor: Color = MaterialTheme.colors.background,
     contentColor: Color = MaterialTheme.colors.onBackground,
     title: String? = null,
-    backIcon: ImageVector? = null,
+    backIcon: ImageVector? = ImageVector.vectorResource(id = R.drawable.ic_arrow_back),
     onBackClickListener: () -> Unit = {},
     postArea: @Composable ((Modifier) -> Unit)? = null,
 ) {
