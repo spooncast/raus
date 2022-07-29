@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_mainFragment_to_tagsFragment"
             app:destination="@id/tagsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/buttonsFragment"
@@ -31,4 +34,13 @@
         android:id="@+id/tagsFragment"
         android:name="club.rooftop.demo.ui.tags.TagsFragment"
         android:label="fragment_tags" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="club.rooftop.demo.ui.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="uiComponent"
+            app:argType="club.rooftop.demo.ui.UiComponent" />
+    </fragment>
 </navigation>
