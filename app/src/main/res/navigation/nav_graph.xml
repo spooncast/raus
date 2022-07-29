@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
 
@@ -10,35 +9,13 @@
         android:name="club.rooftop.demo.ui.MainFragment"
         android:label="fragment_main">
         <action
-            android:id="@+id/action_mainFragment_to_buttonsFragment"
-            app:destination="@id/buttonsFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_popupFragment"
-            app:destination="@id/popupFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_tagsFragment"
-            app:destination="@id/tagsFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/buttonsFragment"
-        android:name="club.rooftop.demo.ui.buttons.ButtonsFragment"
-        android:label="fragment_buttons" />
-    <fragment
-        android:id="@+id/popupFragment"
-        android:name="club.rooftop.demo.ui.popup.PopupFragment"
-        android:label="fragment_popup" />
-    <fragment
-        android:id="@+id/tagsFragment"
-        android:name="club.rooftop.demo.ui.tags.TagsFragment"
-        android:label="fragment_tags" />
-    <fragment
         android:id="@+id/detailsFragment"
         android:name="club.rooftop.demo.ui.DetailsFragment"
-        android:label="fragment_details"
-        tools:layout="@layout/fragment_details" >
+        android:label="fragment_details" >
         <argument
             android:name="uiComponent"
             app:argType="club.rooftop.demo.ui.UiComponent" />
