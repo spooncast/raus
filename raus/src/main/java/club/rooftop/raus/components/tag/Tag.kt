@@ -8,6 +8,7 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,7 +24,9 @@ fun Tag(
     modifier: Modifier = Modifier,
     size: TagSize = TagSize.L,
     text: String,
-    onClick: () -> Unit
+    backgroundColor: Color = Gray10,
+    contentColor: Color = Black,
+    onClick: () -> Unit,
 ) {
     Button(
         onClick = onClick,
@@ -31,8 +34,8 @@ fun Tag(
         elevation = ButtonDefaults.elevation(0.dp, 0.dp, 0.dp, 0.dp, 0.dp),
         shape = RoundedCornerShape(8.dp),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = Gray10,
-            contentColor = Black,
+            backgroundColor = backgroundColor,
+            contentColor = contentColor,
         ),
         contentPadding = PaddingValues(horizontal = size.horizontalInnerPadding),
     ) {
@@ -48,7 +51,7 @@ fun Tag(
 enum class TagSize(
     val horizontalInnerPadding: Dp,
     val height: Dp,
-    val textStyle: TextStyle
+    val textStyle: TextStyle,
 ) {
     L(12.dp, 40.dp, SubheadRegular),
     M(12.dp, 34.dp, Body1Regular),
