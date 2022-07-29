@@ -7,8 +7,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import club.rooftop.demo.ui.BaseFragment
 import club.rooftop.raus.common.VerticalSpacer
-import club.rooftop.raus.components.button.ButtonSize
-import club.rooftop.raus.components.button.SolidButton
+import club.rooftop.raus.components.tag.Tag
+import club.rooftop.raus.components.tag.TagSize
 
 class TagsFragment : BaseFragment() {
 
@@ -20,8 +20,8 @@ class TagsFragment : BaseFragment() {
             modifier = Modifier.padding(16.dp)
         ) {
 
-            SolidButton(
-                size = ButtonSize.L,
+            Tag(
+                size = TagSize.L,
                 text = "Large Tag"
             ) {
 
@@ -29,8 +29,8 @@ class TagsFragment : BaseFragment() {
 
             VerticalSpacer(size = 8.dp)
 
-            SolidButton(
-                size = ButtonSize.M,
+            Tag(
+                size = TagSize.M,
                 text = "Medium Tag"
             ) {
 
@@ -38,8 +38,8 @@ class TagsFragment : BaseFragment() {
 
             VerticalSpacer(size = 8.dp)
 
-            SolidButton(
-                size = ButtonSize.S,
+            Tag(
+                size = TagSize.S,
                 text = "Small Tag"
             ) {
 
