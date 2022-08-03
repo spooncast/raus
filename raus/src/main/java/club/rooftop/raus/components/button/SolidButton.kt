@@ -1,15 +1,27 @@
 package club.rooftop.raus.components.button
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
+import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -20,6 +32,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import club.rooftop.raus.common.HorizontalSpacer
 import club.rooftop.raus.foundation.color.Purple50
+import club.rooftop.raus.foundation.color.Purple60
 import club.rooftop.raus.foundation.typography.Body1Bold
 import club.rooftop.raus.foundation.typography.SubheadBold
 
@@ -29,21 +42,30 @@ fun SolidButton(
     modifier: Modifier = Modifier,
     size: ButtonSize = ButtonSize.L,
     @DrawableRes preVectorImgRes: Int? = null,
-    backgroundColor: Color = Purple50,
+    buttonColor: Color = Purple50,
+    pressedColor: Color = Purple60,
     contentColor: Color = White,
     text: String,
     onClick: () -> Unit
 ) {
-    Button(
-        onClick = onClick,
-        modifier = modifier.height(size.height),
-        elevation = ButtonDefaults.elevation(0.dp, 0.dp, 0.dp, 0.dp, 0.dp),
-        shape = RoundedCornerShape(45.dp),
-        colors = ButtonDefaults.buttonColors(
-            backgroundColor = backgroundColor,
-            contentColor = contentColor,
-        ),
-        contentPadding = PaddingValues(horizontal = size.horizontalInnerPadding),
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+    val color = if (isPressed) pressedColor else buttonColor
+
+    Row(
+        modifier = modifier
+            .height(size.height)
+            .clip(RoundedCornerShape(45.dp))
+            .background(color, RoundedCornerShape(45.dp))
+            .clickable(
+                indication = null,
+                interactionSource = interactionSource
+            ) {
+                onClick()
+            }
+            .padding(PaddingValues(horizontal = size.horizontalInnerPadding)),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         if (preVectorImgRes != null) {
             Icon(
@@ -57,11 +79,26 @@ fun SolidButton(
 
         Text(
             text = text,
+            color = contentColor,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             style = if (size == ButtonSize.L) SubheadBold else Body1Bold
         )
     }
+
+//    Button(
+//        onClick = onClick,
+//        interactionSource = interactionSource,
+//        modifier = modifier
+//            .height(size.height)
+//            .clickable(indication = null, interactionSource = interactionSource) {},
+//        elevation = ButtonDefaults.elevation(0.dp, 0.dp, 0.dp, 0.dp, 0.dp),
+//        shape = RoundedCornerShape(45.dp),
+//        colors = ButtonDefaults.buttonColors(backgroundColor = color, contentColor = contentColor),
+//        contentPadding = PaddingValues(horizontal = size.horizontalInnerPadding),
+//    ) {
+//
+//    }
 }
 
 enum class ButtonSize(
