@@ -2,7 +2,6 @@ package club.rooftop.raus.components.image
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
@@ -31,7 +30,7 @@ fun SquircleImage(
     Box(
         modifier = modifier
             .size(size)
-            .clip(SquircleShape)
+            .clip(SquircleShape())
             .background(borderColor),
         contentAlignment = Alignment.Center
     ) {
@@ -43,7 +42,7 @@ fun SquircleImage(
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .clip(SquircleShape)
+                .clip(SquircleShape())
                 .background(backgroundColor)
                 .size(size - borderSize - borderSize),
         )

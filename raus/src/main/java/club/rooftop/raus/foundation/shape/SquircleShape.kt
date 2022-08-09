@@ -12,10 +12,7 @@ import androidx.core.graphics.translationMatrix
 import kotlin.math.abs
 import kotlin.math.pow
 
-object SquircleShape : Shape {
-
-    private const val SMOOTHING = 3.0
-    private const val OVERSAMPLING_MULTIPLIER = 4F
+class SquircleShape : Shape {
 
     override fun createOutline(
         size: Size,
@@ -78,4 +75,9 @@ object SquircleShape : Shape {
     // squircle formula: | (r^smoothing) - |x|^5 | ^ (1 / smoothing)
     private fun evalSquircleFun(x: Int, poweredRadius: Double, smoothing: Double) =
         (poweredRadius - abs(x.toDouble().pow(smoothing))).pow(1 / smoothing).toFloat()
+
+    companion object {
+        private const val SMOOTHING = 3.0
+        private const val OVERSAMPLING_MULTIPLIER = 4F
+    }
 }
