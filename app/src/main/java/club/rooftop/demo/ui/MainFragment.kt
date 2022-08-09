@@ -30,6 +30,10 @@ class MainFragment : BaseFragment() {
             ListItem("Popup") {
                 navigate(UiComponent.Popup)
             }
+
+            ListItem("Image") {
+                navigate(UiComponent.Image)
+            }
         }
     }
 
@@ -54,5 +58,5 @@ class MainFragment : BaseFragment() {
 }
 
 enum class UiComponent {
-    Button, Popup, Tag
+    Button, Popup, Tag, Image
 }
