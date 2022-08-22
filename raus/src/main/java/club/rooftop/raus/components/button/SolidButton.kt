@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -30,6 +31,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import club.rooftop.raus.R
 import club.rooftop.raus.common.HorizontalSpacer
 import club.rooftop.raus.foundation.color.Purple50
 import club.rooftop.raus.foundation.color.Purple60
@@ -71,10 +73,11 @@ fun SolidButton(
             Icon(
                 ImageVector.vectorResource(id = preVectorImgRes),
                 contentDescription = text,
+                modifier = Modifier.size(size.iconSize),
                 tint = contentColor
             )
 
-            HorizontalSpacer(size = 4.dp)
+            HorizontalSpacer(size = 2.dp)
         }
 
         Text(
@@ -85,29 +88,16 @@ fun SolidButton(
             style = if (size == ButtonSize.L) SubheadBold else Body1Bold
         )
     }
-
-//    Button(
-//        onClick = onClick,
-//        interactionSource = interactionSource,
-//        modifier = modifier
-//            .height(size.height)
-//            .clickable(indication = null, interactionSource = interactionSource) {},
-//        elevation = ButtonDefaults.elevation(0.dp, 0.dp, 0.dp, 0.dp, 0.dp),
-//        shape = RoundedCornerShape(45.dp),
-//        colors = ButtonDefaults.buttonColors(backgroundColor = color, contentColor = contentColor),
-//        contentPadding = PaddingValues(horizontal = size.horizontalInnerPadding),
-//    ) {
-//
-//    }
 }
 
 enum class ButtonSize(
     val horizontalInnerPadding: Dp,
-    val height: Dp
+    val height: Dp,
+    val iconSize: Dp,
 ) {
-    L(16.dp, 52.dp),
-    M(16.dp, 40.dp),
-    S(10.dp, 34.dp),
+    L(16.dp, 52.dp, 28.dp),
+    M(16.dp, 40.dp, 20.dp),
+    S(10.dp, 34.dp, 20.dp),
 }
 
 enum class ButtonType {

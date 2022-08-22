@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import club.rooftop.demo.R
 import club.rooftop.raus.common.VerticalSpacer
 import club.rooftop.raus.components.button.ButtonSize
 import club.rooftop.raus.components.button.SolidButton
@@ -32,6 +33,13 @@ fun ButtonScreen() {
         SolidButton(
             size = ButtonSize.S,
             text = "Small Button"
+        ) {}
+
+        VerticalSpacer(size = 8.dp)
+
+        SolidButton(
+            preVectorImgRes = R.drawable.ic_group,
+            text = "Button with Icon"
         ) {}
     }
 }
