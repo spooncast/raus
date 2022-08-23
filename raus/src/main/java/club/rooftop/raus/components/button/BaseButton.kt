@@ -45,10 +45,10 @@ private val buttonShape: Shape by lazy { RoundedCornerShape(45.dp) }
 
 @Composable
 internal fun BaseButton(
-    modifier: Modifier = Modifier,
-    size: ButtonSize = ButtonSize.L,
-    type: ButtonTypes = ButtonTypes.Solid(),
-    @DrawableRes preVectorImgRes: Int? = null,
+    modifier: Modifier,
+    size: ButtonSize,
+    type: ButtonTypes,
+    @DrawableRes preVectorImgRes: Int?,
     text: String,
     onClick: () -> Unit
 ) {
