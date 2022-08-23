@@ -8,7 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import club.rooftop.raus.common.VerticalSpacer
-import club.rooftop.raus.components.button.ButtonType
+import club.rooftop.raus.components.button.ButtonTypes
 import club.rooftop.raus.components.button.SolidButton
 import club.rooftop.raus.components.dialog.PopupDialog
 import club.rooftop.raus.foundation.color.Purple50
@@ -101,7 +101,7 @@ private fun PopupDialogs() {
                     BodyText()
                 },
                 primaryButtonText = "Button",
-                primaryButtonType = ButtonType.Solid,
+                primaryButtonType = ButtonTypes.Solid(),
                 onClickPrimaryButton = { /*TODO*/ },
                 onDismiss = { popupType.value = null }
             )
@@ -113,7 +113,7 @@ private fun PopupDialogs() {
                     BodyText()
                 },
                 primaryButtonText = "Button",
-                primaryButtonType = ButtonType.Solid,
+                primaryButtonType = ButtonTypes.Solid(),
                 secondaryButtonText = "Cancel",
                 onClickPrimaryButton = { /*TODO*/ },
                 onDismiss = { popupType.value = null }

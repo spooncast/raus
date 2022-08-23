@@ -42,10 +42,10 @@ import club.rooftop.raus.foundation.typography.Body1Bold
 import club.rooftop.raus.foundation.typography.SubheadBold
 
 @Composable
-fun SolidButton(
+fun OutlinedButton(
     modifier: Modifier = Modifier,
     size: ButtonSize = ButtonSize.L,
-    type: ButtonTypes.Solid = ButtonTypes.Solid(),
+    type: ButtonTypes.Outlined = ButtonTypes.Outlined(),
     @DrawableRes preVectorImgRes: Int? = null,
     text: String,
     onClick: () -> Unit
