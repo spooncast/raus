@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import club.rooftop.raus.common.HorizontalSpacer
 import club.rooftop.raus.common.VerticalSpacer
-import club.rooftop.raus.components.button.ButtonType
+import club.rooftop.raus.components.button.ButtonTypes
 import club.rooftop.raus.components.button.SolidButton
 import club.rooftop.raus.foundation.color.Gray90
 import club.rooftop.raus.foundation.color.Purple50
@@ -39,7 +39,7 @@ fun PopupDialog(
     title: String? = null,
     body: @Composable () -> Unit,
     primaryButtonText: String,
-    primaryButtonType: ButtonType = ButtonType.Text,
+    primaryButtonType: ButtonTypes = ButtonTypes.Text,
     primaryButtonTextColor: Color = Gray90,
     secondaryButtonText: String? = null,
     onClickPrimaryButton: () -> Unit,
@@ -76,7 +76,7 @@ fun PopupDialog(
 
 @Composable
 private fun FooterArea(
-    primaryButtonType: ButtonType,
+    primaryButtonType: ButtonTypes,
     primaryButtonText: String,
     primaryButtonTextColor: Color,
     onClickPrimaryButton: () -> Unit,
@@ -86,11 +86,11 @@ private fun FooterArea(
     val modifier = Modifier
         .fillMaxWidth()
         .padding(
-            top = if (primaryButtonType == ButtonType.Solid) 6.dp else 0.dp,
-            bottom = if (primaryButtonType == ButtonType.Solid) 24.dp else 18.dp
+            top = if (primaryButtonType is ButtonTypes.Solid) 6.dp else 0.dp,
+            bottom = if (primaryButtonType is ButtonTypes.Solid) 24.dp else 18.dp
         )
 
-    if (primaryButtonType == ButtonType.Solid) {
+    if (primaryButtonType is ButtonTypes.Solid) {
         VerticalButtons(
             modifier,
             primaryButtonType,
@@ -118,7 +118,7 @@ private fun HorizontalButtons(
     modifier: Modifier,
     secondaryButtonText: String?,
     onClickSecondaryButton: (() -> Unit)?,
-    primaryButtonType: ButtonType,
+    primaryButtonType: ButtonTypes,
     primaryButtonText: String,
     primaryButtonTextColor: Color,
     onClickPrimaryButton: () -> Unit,
@@ -145,7 +145,7 @@ private fun HorizontalButtons(
 @Composable
 private fun VerticalButtons(
     modifier: Modifier,
-    primaryButtonType: ButtonType,
+    primaryButtonType: ButtonTypes,
     primaryButtonText: String,
     primaryButtonTextColor: Color,
     onClickPrimaryButton: () -> Unit,
@@ -172,14 +172,15 @@ private fun VerticalButtons(
 
 @Composable
 private fun PrimaryButton(
-    buttonType: ButtonType,
+    buttonType: ButtonTypes,
     text: String,
     textColor: Color,
     onClick: () -> Unit,
 ) {
     when (buttonType) {
-        ButtonType.Solid -> SolidButton(
+        is ButtonTypes.Solid -> SolidButton(
             modifier = Modifier.widthIn(min = 200.dp),
+            type = buttonType,
             text = text,
             onClick = onClick
         )
@@ -258,7 +259,7 @@ fun PreviewHorizontalOneButton() {
                         style = Body1RegularCenter)
                 },
                 primaryButtonText = "Confirm",
-                primaryButtonType = ButtonType.Text,
+                primaryButtonType = ButtonTypes.Text,
                 primaryButtonTextColor = Gray90,
                 secondaryButtonText = null,
                 onClickPrimaryButton = {
@@ -293,7 +294,7 @@ fun PreviewHorizontalTwoButton() {
                     )
                 },
                 primaryButtonText = "OK",
-                primaryButtonType = ButtonType.Text,
+                primaryButtonType = ButtonTypes.Text,
                 primaryButtonTextColor = Purple50,
                 secondaryButtonText = "Cancel",
                 onClickPrimaryButton = {
@@ -328,7 +329,7 @@ fun PreviewVerticalOneButton() {
                     )
                 },
                 primaryButtonText = "Confirm",
-                primaryButtonType = ButtonType.Solid,
+                primaryButtonType = ButtonTypes.Solid(),
                 primaryButtonTextColor = Gray90,
                 secondaryButtonText = null,
                 onClickPrimaryButton = {
@@ -363,7 +364,7 @@ fun PreviewVerticalTwoButton() {
                     )
                 },
                 primaryButtonText = "Confirm",
-                primaryButtonType = ButtonType.Solid,
+                primaryButtonType = ButtonTypes.Solid(),
                 primaryButtonTextColor = Gray90,
                 secondaryButtonText = "Cancel",
                 onClickPrimaryButton = {
