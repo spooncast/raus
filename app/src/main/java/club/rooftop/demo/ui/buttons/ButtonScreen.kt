@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import club.rooftop.demo.R
 import club.rooftop.raus.common.VerticalSpacer
@@ -61,6 +62,15 @@ private fun OutlinedButtons() {
         preVectorImgRes = R.drawable.ic_group,
         type = ButtonTypes.Outlined(),
         text = "Button with Icon"
+    ) {}
+
+    VerticalSpacer(size = 8.dp)
+
+    OutlinedButton(
+        size = ButtonSize.S,
+        preVectorImgRes = R.drawable.ic_eye,
+        type = ButtonTypes.Outlined(Color.White),
+        text = "27",
     ) {}
 }
 
