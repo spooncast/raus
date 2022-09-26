@@ -33,6 +33,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion '1.2.0'
     }
+    namespace 'club.rooftop.raus'
 }
 
 dependencies {
