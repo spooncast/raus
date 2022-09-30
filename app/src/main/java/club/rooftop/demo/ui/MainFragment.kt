@@ -19,20 +19,10 @@ class MainFragment : BaseFragment() {
     @Composable
     override fun Body() {
         Column {
-            ListItem("Buttons") {
-                navigate(UiComponent.Button)
-            }
-
-            ListItem("Tags") {
-                navigate(UiComponent.Tag)
-            }
-
-            ListItem("Popup") {
-                navigate(UiComponent.Popup)
-            }
-
-            ListItem("Image") {
-                navigate(UiComponent.Image)
+            UiComponent.values().forEach { comp ->
+                ListItem(title = comp.name) {
+                    navigate(comp)
+                }
             }
         }
     }
@@ -58,5 +48,9 @@ class MainFragment : BaseFragment() {
 }
 
 enum class UiComponent {
-    Button, Popup, Tag, Image
+    BUTTON,
+    POPUP,
+    TAG,
+    IMAGE,
+    BADGE
 }
