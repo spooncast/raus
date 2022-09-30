@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -39,6 +40,7 @@ import club.rooftop.raus.foundation.color.Gray90
 import club.rooftop.raus.foundation.color.Purple50
 import club.rooftop.raus.foundation.color.Purple60
 import club.rooftop.raus.foundation.typography.Body1Bold
+import club.rooftop.raus.foundation.typography.Body2Bold
 import club.rooftop.raus.foundation.typography.SubheadBold
 
 private val buttonShape: Shape by lazy { RoundedCornerShape(45.dp) }
@@ -89,7 +91,7 @@ internal fun BaseButton(
             color = type.contentColor,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            style = if (size == ButtonSize.L) SubheadBold else Body1Bold
+            style = size.textStyle
         )
 
         if (postVectorImgRes != null) {
@@ -109,10 +111,12 @@ enum class ButtonSize(
     val horizontalInnerPadding: Dp,
     val height: Dp,
     val iconSize: Dp,
+    val textStyle: TextStyle
 ) {
-    L(16.dp, 52.dp, 28.dp),
-    M(16.dp, 40.dp, 20.dp),
-    S(10.dp, 34.dp, 20.dp),
+    L(16.dp, 52.dp, 28.dp, SubheadBold),
+    M(16.dp, 40.dp, 20.dp, Body1Bold),
+    S(10.dp, 34.dp, 20.dp, Body1Bold),
+    XS(8.dp, 26.dp, 16.dp, Body2Bold),
 }
 
 sealed class ButtonTypes(
