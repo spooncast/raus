@@ -69,7 +69,7 @@ internal fun BaseButton(
             ) {
                 onClick()
             }
-            .padding(PaddingValues(horizontal = size.horizontalInnerPadding)),
+            .padding(horizontal = size.horizontalInnerPadding),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
