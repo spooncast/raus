@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import club.rooftop.demo.R
 import club.rooftop.raus.common.VerticalSpacer
 import club.rooftop.raus.components.badge.Badge
+import club.rooftop.raus.components.badge.DotBadge
 import club.rooftop.raus.components.button.ButtonSize
 import club.rooftop.raus.components.button.ButtonTypes
 import club.rooftop.raus.components.button.OutlinedButton
@@ -29,6 +30,6 @@ fun BadgeScreen() {
 
         VerticalSpacer(size = 32.dp)
 
-
+        DotBadge()
     }
 }
