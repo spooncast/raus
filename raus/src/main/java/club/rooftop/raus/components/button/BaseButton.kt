@@ -51,7 +51,9 @@ internal fun BaseButton(
     size: ButtonSize,
     type: ButtonTypes,
     @DrawableRes preVectorImgRes: Int?,
+    preIconColor: Color?,
     @DrawableRes postVectorImgRes: Int?,
+    postIconColor: Color?,
     text: String,
     onClick: () -> Unit
 ) {
@@ -80,7 +82,7 @@ internal fun BaseButton(
                 ImageVector.vectorResource(id = preVectorImgRes),
                 contentDescription = text,
                 modifier = Modifier.size(size.iconSize),
-                tint = type.contentColor,
+                tint = preIconColor ?: type.contentColor,
             )
 
             HorizontalSpacer(size = 2.dp)
@@ -101,7 +103,7 @@ internal fun BaseButton(
                 ImageVector.vectorResource(id = postVectorImgRes),
                 contentDescription = text,
                 modifier = Modifier.size(size.iconSize),
-                tint = type.contentColor,
+                tint = postIconColor ?: type.contentColor,
             )
         }
     }
