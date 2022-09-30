@@ -15,7 +15,7 @@ fun OutlinedButton(
     @DrawableRes postVectorImgRes: Int? = null,
     postIconColor: Color? = null,
     text: String,
-    onClick: () -> Unit
+    onClick: (() -> Unit)?
 ) {
     BaseButton(
         modifier = modifier,

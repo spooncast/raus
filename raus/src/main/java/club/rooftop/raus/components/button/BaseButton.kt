@@ -55,7 +55,7 @@ internal fun BaseButton(
     @DrawableRes postVectorImgRes: Int?,
     postIconColor: Color?,
     text: String,
-    onClick: () -> Unit
+    onClick: (() -> Unit)?
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
@@ -67,12 +67,13 @@ internal fun BaseButton(
             .clip(buttonShape)
             .background(color, buttonShape)
             .border(1.dp, borderColor, buttonShape)
-            .clickable(
-                indication = null,
-                interactionSource = interactionSource
-            ) {
-                onClick()
-            }
+            .then(
+                if (onClick != null) Modifier.clickable(
+                    indication = null,
+                    interactionSource = interactionSource,
+                    onClick = onClick
+                ) else Modifier
+            )
             .padding(horizontal = size.horizontalInnerPadding),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically

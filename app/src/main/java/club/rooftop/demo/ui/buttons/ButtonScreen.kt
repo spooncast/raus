@@ -99,7 +99,8 @@ private fun SolidButtons() {
     SolidButton(
         text = "Postfix Button",
         postVectorImgRes = R.drawable.ic_group,
-    ) {}
+        onClick = null
+    )
 
     VerticalSpacer(size = 8.dp)
 
@@ -107,5 +108,6 @@ private fun SolidButtons() {
         preVectorImgRes = R.drawable.ic_group,
         text = "Both Button",
         postVectorImgRes = R.drawable.ic_group,
-    ) {}
+        onClick = null
+    )
 }
