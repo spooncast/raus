@@ -3,6 +3,7 @@ package club.rooftop.raus.components.button
 import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun SolidButton(
@@ -10,7 +11,9 @@ fun SolidButton(
     size: ButtonSize = ButtonSize.L,
     type: ButtonTypes.Solid = ButtonTypes.Solid(),
     @DrawableRes preVectorImgRes: Int? = null,
+    preIconColor: Color? = null,
     @DrawableRes postVectorImgRes: Int? = null,
+    postIconColor: Color? = null,
     text: String,
     onClick: () -> Unit
 ) {
@@ -19,7 +22,9 @@ fun SolidButton(
         size = size,
         type = type,
         preVectorImgRes = preVectorImgRes,
+        preIconColor = preIconColor,
         postVectorImgRes = postVectorImgRes,
+        postIconColor = postIconColor,
         text = text,
         onClick = onClick
     )
