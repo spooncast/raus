@@ -2,6 +2,8 @@ package club.rooftop.demo.ui.buttons
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,7 +19,9 @@ import club.rooftop.raus.components.button.SolidButton
 @Composable
 fun ButtonScreen() {
     Column(
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState())
     ) {
 
         SolidButtons()
@@ -72,6 +76,25 @@ private fun OutlinedButtons() {
         type = ButtonTypes.Outlined(Color.White),
         text = "27",
     ) {}
+
+    VerticalSpacer(size = 8.dp)
+
+    OutlinedButton(
+        size = ButtonSize.S,
+        postVectorImgRes = R.drawable.ic_eye,
+        type = ButtonTypes.Outlined(Color.White),
+        text = "27",
+    ) {}
+
+    VerticalSpacer(size = 8.dp)
+
+    OutlinedButton(
+        size = ButtonSize.S,
+        preVectorImgRes = R.drawable.ic_eye,
+        postVectorImgRes = R.drawable.ic_eye,
+        type = ButtonTypes.Outlined(Color.White),
+        text = "27",
+    ) {}
 }
 
 @Composable
@@ -103,6 +126,21 @@ private fun SolidButtons() {
 
     SolidButton(
         preVectorImgRes = R.drawable.ic_group,
-        text = "Button with Icon"
+        text = "Prefix Button"
+    ) {}
+
+    VerticalSpacer(size = 8.dp)
+
+    SolidButton(
+        text = "Postfix Button",
+        postVectorImgRes = R.drawable.ic_group,
+    ) {}
+
+    VerticalSpacer(size = 8.dp)
+
+    SolidButton(
+        preVectorImgRes = R.drawable.ic_group,
+        text = "Both Button",
+        postVectorImgRes = R.drawable.ic_group,
     ) {}
 }

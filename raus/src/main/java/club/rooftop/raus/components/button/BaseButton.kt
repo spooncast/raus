@@ -49,6 +49,7 @@ internal fun BaseButton(
     size: ButtonSize,
     type: ButtonTypes,
     @DrawableRes preVectorImgRes: Int?,
+    @DrawableRes postVectorImgRes: Int?,
     text: String,
     onClick: () -> Unit
 ) {
@@ -90,6 +91,17 @@ internal fun BaseButton(
             overflow = TextOverflow.Ellipsis,
             style = if (size == ButtonSize.L) SubheadBold else Body1Bold
         )
+
+        if (postVectorImgRes != null) {
+            HorizontalSpacer(size = 2.dp)
+
+            Icon(
+                ImageVector.vectorResource(id = postVectorImgRes),
+                contentDescription = text,
+                modifier = Modifier.size(size.iconSize),
+                tint = type.contentColor,
+            )
+        }
     }
 }
 

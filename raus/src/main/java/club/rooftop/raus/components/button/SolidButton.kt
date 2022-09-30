@@ -47,6 +47,7 @@ fun SolidButton(
     size: ButtonSize = ButtonSize.L,
     type: ButtonTypes.Solid = ButtonTypes.Solid(),
     @DrawableRes preVectorImgRes: Int? = null,
+    @DrawableRes postVectorImgRes: Int? = null,
     text: String,
     onClick: () -> Unit
 ) {
@@ -55,6 +56,7 @@ fun SolidButton(
         size = size,
         type = type,
         preVectorImgRes = preVectorImgRes,
+        postVectorImgRes = postVectorImgRes,
         text = text,
         onClick = onClick
     )
