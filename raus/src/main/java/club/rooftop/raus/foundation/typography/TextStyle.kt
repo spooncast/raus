@@ -9,7 +9,7 @@ val TitleBold: TextStyle by lazy {
     TextStyle(
         fontSize = 20.sp,
         fontWeight = FontWeight.Bold,
-        lineHeight = 24.sp
+        lineHeight = 30.sp
     )
 }
 
@@ -57,14 +57,14 @@ val SubheadBoldCenter: TextStyle by lazy {
 val Body1Regular: TextStyle by lazy {
     TextStyle(
         fontSize = 14.sp,
-        lineHeight = 24.sp
+        lineHeight = 21.sp
     )
 }
 
 val Body1RegularCenter: TextStyle by lazy {
     TextStyle(
         fontSize = 14.sp,
-        lineHeight = 24.sp,
+        lineHeight = 21.sp,
         textAlign = TextAlign.Center
     )
 }
@@ -72,7 +72,7 @@ val Body1RegularCenter: TextStyle by lazy {
 val Body1RegularEnd: TextStyle by lazy {
     TextStyle(
         fontSize = 14.sp,
-        lineHeight = 24.sp,
+        lineHeight = 21.sp,
         textAlign = TextAlign.End
     )
 }
@@ -81,7 +81,7 @@ val Body1Bold: TextStyle by lazy {
     TextStyle(
         fontSize = 14.sp,
         fontWeight = FontWeight.Bold,
-        lineHeight = 24.sp
+        lineHeight = 21.sp
     )
 }
 
@@ -89,7 +89,7 @@ val Body1BoldCenter: TextStyle by lazy {
     TextStyle(
         fontSize = 14.sp,
         fontWeight = FontWeight.Bold,
-        lineHeight = 24.sp,
+        lineHeight = 21.sp,
         textAlign = TextAlign.Center
     )
 }
@@ -97,14 +97,14 @@ val Body1BoldCenter: TextStyle by lazy {
 val Body2Regular: TextStyle by lazy {
     TextStyle(
         fontSize = 12.sp,
-        lineHeight = 42.sp
+        lineHeight = 18.sp
     )
 }
 
 val Body2RegularCenter: TextStyle by lazy {
     TextStyle(
         fontSize = 12.sp,
-        lineHeight = 42.sp,
+        lineHeight = 18.sp,
         textAlign = TextAlign.Center
     )
 }
@@ -146,5 +146,14 @@ val Headline3Bold: TextStyle by lazy {
         fontSize = 24.sp,
         fontWeight = FontWeight.Bold,
         lineHeight = 36.sp
+    )
+}
+
+val Headline3BoldCenter: TextStyle by lazy {
+    TextStyle(
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold,
+        lineHeight = 36.sp,
+        textAlign = TextAlign.Center
     )
 }
