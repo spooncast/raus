@@ -1,6 +1,7 @@
 package club.rooftop.raus.components.button
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -25,12 +26,14 @@ import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import club.rooftop.raus.R
 import club.rooftop.raus.common.HorizontalSpacer
 import club.rooftop.raus.foundation.color.Gray20
 import club.rooftop.raus.foundation.color.Gray30
@@ -143,6 +146,43 @@ internal fun BaseIconButton(
             contentDescription = null,
             modifier = Modifier.size(size.iconSize),
             tint = iconColor ?: type.contentColor,
+        )
+    }
+}
+
+@Composable
+internal fun BaseImageButton(
+    modifier: Modifier,
+    size: ButtonSize,
+    type: ButtonTypes,
+    @DrawableRes imgRes: Int,
+    onClick: (() -> Unit)?
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+    val color = if (isPressed) type.pressedColor else type.buttonColor
+    val borderColor = if (type is ButtonTypes.Outlined) type.borderColor else color
+    Row(
+        modifier = modifier
+            .height(size.height)
+            .clip(buttonShape)
+            .background(color, buttonShape)
+            .border(1.dp, borderColor, buttonShape)
+            .then(
+                if (onClick != null) Modifier.clickable(
+                    indication = null,
+                    interactionSource = interactionSource,
+                    onClick = onClick
+                ) else Modifier
+            )
+            .padding(horizontal = size.horizontalInnerPadding),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            painter = painterResource(id = imgRes),
+            contentDescription = null,
+            modifier = Modifier.size(size.iconSize),
         )
     }
 }

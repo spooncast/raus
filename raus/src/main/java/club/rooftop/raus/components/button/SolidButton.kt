@@ -48,3 +48,20 @@ fun SolidIconButton(
         onClick = onClick
     )
 }
+
+@Composable
+fun SolidImageButton(
+    modifier: Modifier = Modifier,
+    size: ButtonSize = ButtonSize.L,
+    type: ButtonTypes.Solid = ButtonTypes.Solid(),
+    @DrawableRes imgRes: Int,
+    onClick: (() -> Unit)?
+) {
+    BaseImageButton(
+        modifier = modifier,
+        size = size,
+        type = type,
+        imgRes = imgRes,
+        onClick = onClick
+    )
+}

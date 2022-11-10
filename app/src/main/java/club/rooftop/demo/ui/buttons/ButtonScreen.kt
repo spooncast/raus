@@ -19,8 +19,10 @@ import club.rooftop.raus.components.button.ButtonSize
 import club.rooftop.raus.components.button.ButtonTypes
 import club.rooftop.raus.components.button.OutlinedButton
 import club.rooftop.raus.components.button.OutlinedIconButton
+import club.rooftop.raus.components.button.OutlinedImageButton
 import club.rooftop.raus.components.button.SolidButton
 import club.rooftop.raus.components.button.SolidIconButton
+import club.rooftop.raus.components.button.SolidImageButton
 
 @Composable
 fun ButtonScreen() {
@@ -72,10 +74,10 @@ private fun OutlinedButtons() {
         ).forEach { btnSize ->
             HorizontalSpacer(size = 8.dp)
 
-            OutlinedIconButton(
+            OutlinedImageButton(
                 size = btnSize,
                 type = ButtonTypes.Outlined(),
-                vectorImgRes = R.drawable.ic_eye
+                imgRes = R.drawable.img_wave
             ) {}
         }
     }
@@ -138,10 +140,10 @@ private fun SolidButtons() {
         ).forEach { btnSize ->
             HorizontalSpacer(size = 8.dp)
 
-            SolidIconButton(
+            SolidImageButton(
                 size = btnSize,
                 type = ButtonTypes.Solid(),
-                vectorImgRes = R.drawable.ic_eye
+                imgRes = R.drawable.img_wave
             ) {}
         }
     }
