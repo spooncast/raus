@@ -29,3 +29,22 @@ fun OutlinedButton(
         onClick = onClick
     )
 }
+
+@Composable
+fun OutlinedIconButton(
+    modifier: Modifier = Modifier,
+    size: ButtonSize = ButtonSize.ICON_L,
+    type: ButtonTypes.Outlined = ButtonTypes.Outlined(),
+    @DrawableRes vectorImgRes: Int,
+    iconColor: Color? = null,
+    onClick: (() -> Unit)?
+) {
+    BaseIconButton(
+        modifier = modifier,
+        size = size,
+        type = type,
+        vectorImgRes = vectorImgRes,
+        iconColor = iconColor,
+        onClick = onClick
+    )
+}

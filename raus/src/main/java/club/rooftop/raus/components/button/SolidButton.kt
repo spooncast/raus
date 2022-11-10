@@ -29,3 +29,22 @@ fun SolidButton(
         onClick = onClick
     )
 }
+
+@Composable
+fun SolidIconButton(
+    modifier: Modifier = Modifier,
+    size: ButtonSize = ButtonSize.L,
+    type: ButtonTypes.Solid = ButtonTypes.Solid(),
+    @DrawableRes vectorImgRes: Int,
+    preIconColor: Color? = null,
+    onClick: (() -> Unit)?
+) {
+    BaseIconButton(
+        modifier = modifier,
+        size = size,
+        type = type,
+        vectorImgRes = vectorImgRes,
+        iconColor = preIconColor,
+        onClick = onClick
+    )
+}
